@@ -1,16 +1,39 @@
 ---
-
+import Hero from "../components/Hero.astro";
+import Birth from "../components/Birth.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body class="bg-gray-800">
-		<h1>Astro</h1>
-	</body>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Дни рождения</title>
+  </head>
+  <body class="bg-gray-800">
+    <Hero />
+    <Birth />
+  </body>
 </html>
+
+<script>
+  import "preline/dist/components/hs-tabs/hs-tabs";
+  import "../assets/js/birth";
+</script>
+
+<style is:global>
+  html {
+    font-size: 18px;
+  }
+  ._container-x {
+    @apply container px-4 lg:px-12 mx-auto;
+  }
+  ._container-y {
+    @apply py-5;
+  }
+  /* .pagination li {
+    display:inline-block; 
+    padding:10px; 
+  } */
+</style>

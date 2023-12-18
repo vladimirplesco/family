@@ -1,0 +1,53 @@
+---
+import Month from "./Month.astro";
+import Search from "./Search.astro";
+import Pagination from "./Pagination.astro";
+
+const tabs = [
+  { id: "day", name: "Сегодня" },
+  { id: "soon", name: "Скоро" },
+  { id: "month", name: "Месяц" },
+  { id: "all", name: "Все" },
+];
+---
+
+<section class="_container-x _container-y">
+  <div class="border-b border-gray-500">
+    <nav class="flex gap-2" aria-label="Tabs" role="tablist">
+      {
+        tabs.map((tab, index) => (
+          <button
+            type="button"
+            class="flex-auto sm:flex-none -mb-px py-3 sm:px-3 text-xs sm:text-center border rounded-t-lg bg-gray-700 text-gray-300 hs-tab-active:bg-gray-800 hs-tab-active:text-gray-200 border-gray-500 hs-tab-active:border-b-transparent"
+            class:list={`${index === 0 ? "active" : ""}`}
+            id={`tab-${tab.id}`}
+            data-hs-tab={`#tab-content-${tab.id}`}
+            aria-controls={`tab-content-${tab.id}`}
+            role="tab">
+            {tab.name}
+          </button>
+        ))
+      }
+    </nav>
+  </div>
+  <div>
+    {
+      tabs.map((tab, index) => (
+        <div
+          class:list={`${index === 0 ? "" : "hidden"}`}
+          id={`tab-content-${tab.id}`}
+          aria-labelledby={`tab-${tab.id}`}
+          role="tabpanel">
+          <div id={tab.id}>
+            {tab.id === "month" && <Month />}
+            {tab.id === "all" && <Search />}
+            <div class="list text-gray-400">
+              <div class="flex justify-between gap-5 py-4 border-b border-gray-600"><div class="name text-left">Идёт загрузка данных...</div><div class="rus iso text-right" data-iso="0"></div></div>
+            </div>
+            {tab.id === "all" && <Pagination />}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
