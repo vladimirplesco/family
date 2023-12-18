@@ -1,0 +1,5 @@
+{
+  "astro.typescript.diagnostics.enabled": false,
+  "typescript.validate.enable": false,
+  "javascript.validate.enable": false,
+}
